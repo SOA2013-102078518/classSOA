@@ -1,0 +1,64 @@
+$sudo  run anything as i am the root 我不是root但以root的方式對我 讓我可以安裝一些東西
+$ ls../.. 
+~ where ur home
+sqlite: database you use
+
+ls public 
+
+在URL中輸入: localhost:3000
+WEBrick  port=3000
+robots.txt 是一種存放於網站根目錄下的ASCII編碼的文字檔案，它通常告訴網路搜尋引擎的漫遊器（又稱網路蜘蛛），此網站中的哪些內容是不應被搜尋引擎的漫遊器獲取的，哪些是可以被（漫遊器）獲取的。
+
+github要下載SSH Key:因為不希望大家去上傳與下載code
+
+啟動指令互動環境irb
+編輯文件vi
+開始編輯i
+離開esc + : wq
+gitconfig
+
+定義方法:def()
+
+移動所在目錄 cd XXX
+移動到上一層目錄cd ..
+顯示目前所在目錄pwd
+顯示目前目錄的檔案ls
+刪除檔案rm XXX
+刪除目錄rm XXX
+
+注意檔案的格式要儲存成UTF-8，無BOM(byte-order mark)表頭
+
+在Ruby中，方法中還可以定義方法
+ 
+“anna”.reverse
+"Jimmy".length 
+"Jimmy" * 5 
+
+40.to_s.reverse>> "04"
+
+to_s converts things to strings.
+to_i converts things to integers (numbers.)
+to_a converts things to arrays.
+
+xxx=[]
+xxx.sort
+
+poem['toast'] = 'honeydew' >>將toast取代成honeydew
+
+little change_Blog
+Popup.make do
+  h1 "This is anna blog"
+  list do
+   blog.each do |entry|
+  h2 entry.title
+  p entry.fulltext
+  p entry.time
+      end   
+    end
+  end
+
+
+
+
+
+ 
