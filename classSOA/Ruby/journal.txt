@@ -1,7 +1,21 @@
+github
+帳號:SOA2013-102078518
+密碼:huanna0717
+
+交作業 cd Document/
+       git init
+       git add classSA
+       git status
+       git git remote add origin https://github.com/SOA2013-102078518/ClassSOA.git
+ >> https://github.com/id/repo.git
+git push -u origin master
+
+ 
+ls .. 告訴我有哪些folder higher than me 
 $sudo  run anything as i am the root 我不是root但以root的方式對我 讓我可以安裝一些東西
 $ ls../.. 
 ~ where ur home
-sqlite: database you use
+sqlite: database u use
 
 ls public 
 
@@ -11,10 +25,9 @@ robots.txt 是一種存放於網站根目錄下的ASCII編碼的文字檔案，�
 
 github要下載SSH Key:因為不希望大家去上傳與下載code
 
-啟動指令互動環境irb
-編輯文件vi
-開始編輯i
-離開esc + : wq
+vi編輯文件
+i開始編輯
+esc + : wq
 gitconfig
 
 定義方法:def()
@@ -39,26 +52,240 @@ gitconfig
 to_s converts things to strings.
 to_i converts things to integers (numbers.)
 to_a converts things to arrays.
-
 xxx=[]
 xxx.sort
 
-poem['toast'] = 'honeydew' >>將toast取代成honeydew
+poem['toas¬t'] = 'hone¬ydew' >>將toas¬t取代成
+ 
+2013/09/30
+3.times{print”we love ruby!”}
+“hello”.reverse
+“hello”.up
+“hello”.upcase >>”HELLO”
+(1..10)>>1..10
 
-little change_Blog
-Popup.make do
+(1..10).all?{|num| num>0
+True
+
+(1..10).all?{|num| num>2
+false
+
+(1..10).any?{|num| num>8
+True
+
+(1..10).any?{|num| num>11
+False
+
+(1..10).reduce(:+)
+55
+
+(1..10).reduce(:*)
+
+
+
+
+ 
+2013/10/6
+tryruby HW_BOLG
+Popup.make¬ do
   h1 "This is anna blog"
   list do
    blog.each do |entry|
   h2 entry.title
   p entry.fulltext
   p entry.time
-      end   
+end   
     end
   end
 
+emacs blog.rb
+class BlogEntry >>建一個新class
+def initialize{title,mood,fulltext}
+@time=Time.now
+@title=title
+@mood=mood
+@ fulltext = fulltext
+End
+End
 
 
+在irb下
+Load “blog.rb”
+Entry=BlogEntry.new(“My First Entry!”:happy,”this is the first thing I have entered”)
+Entry2= BlogEntry.new(“My Second Entry!”:okay,”this is the second thing I have entered”)
+
+
+blogList=[ Entry, Entry2]
+blogList.length
+blogList[0]>>列出
+blogList[1]
+blogList.map{ |ent| ent.title}
+
+
+ “happy”-string of 字母
+:happy-symbol
+
+
+
+
+class TechBlogEntry <BlogEntry >>建一個TechBlogEntry繼承BlogEntry的特性
+def initialize{title,mood,fulltext,topic} >>topic是superclass所沒有的
+@topic=topic
+
+End
+End
+
+Load “blog.rb”
+New entry=TechBlogEntry.new(“tech Entry1 !”:excited,”this is the first technal entry about ruby”,:ruby)
 
 
  
+2013/10/7
+2.1 Creating and Editing Files
+nano (text editing)
+
+We are going to use nano to make a new file calledscience.txt 
+% cd ~
+% nano science.txt
+
+2.2 Copying Files
+cp file1 file2 is the command which makes a copy of file1 in the current working directory and calls it file2
+
+2.3 Moving files
+mv file1 file2 moves (or renames) file1 to file2
+
+2.4 Removing files and directories
+
+rm (remove), rmdir (remove directory)
+clear (clear screen)
+% clear
+
+cat (concatenate)
+The command cat can be used to display the contents of a file on the screen. Type:
+% cat science.txt
+less
+The command less writes the contents of a file onto the screen a page at a time. Type
+% less science.txt
+/science >>在science.txt搜尋slience這個單字
+grep
+% grep science science.txt
+% grep -i science science.txt >>會忽略大小寫(Science 跟science )差異
+% grep -i 'spinning top' science.txt >>搜尋phrase or pattern
+-v display those lines that do NOT match 
+-n precede each maching line with the line number 
+-c print only the total count of matched lines 
+wc (word count)
+% wc -w science.txt >>算science.txt的字數
+% wc -l science.txt >>算science.txt的行數
+
+cp file1 file2	copy file1 and call it file2
+mv file1 file2	move or rename file1 to file2
+rm file	remove a file
+rmdir directory	remove a directory
+cat file	display a file
+more file	display a file a page at a time
+head file	display the first few lines of a file
+tail file	display the last few lines of a file
+grep 'keyword' file	search a file for keywords
+wc file	count number of lines/words/characters in file
+
+ Tutorial 3
+
+
+
+command > file	redirect standard output to a file
+command >> file	append standard output to a file
+command < file	redirect standard input from a file
+command1 | command2	pipe the output of command1 to the input of command2
+cat file1 file2 > file0	concatenate file1 and file2 to file0
+sort	sort data
+who	list users currently logged in
+a2ps -Pprinter textfile	print text file to named printer
+lpr -Pprinter psfile	print postscript file to named printer
+
+
+Array
+Array.new
+Shelf= Array.new
+shelf=["anna","hua","mimi"]
+shelf.length
+shelf[0]  “anna”
+shelf<<"mom"
+shelf.reverse!  ["mom", "mimi", "hua", "anna"] >>加驚嘆號才會reverse
+shelf.reverse   ["anna", "hua", "mimi", "mom"]
+
+       0            1            2                3
+      anna	   hua         	mimi	         Mom
+
+Hash
+directory=Hash["anna"=>"0912867721","hua"=>"0912689351"]
+directory keys
+directory.value
+directory.map{|name,phone|print”#{name}:#{phone}”}>>在同一行顯示
+directory.map{|name,phone|puts”#{name}:#{phone}”} >>可換行顯示
+= directory.map{|name,phone|print”#{name}:#{phone}\n”}
+
+
+
+nano
+emacs blog.rb
+
+
+
+
+entry.title>>會出現錯誤，因為無法從class外部更改 read他們
+要先attr_accessor:title,:mood,:fulltext,:time
+
+Blog.map{|ent| ent.title}
+
+
+curl –c “cookies.txt” http://google.com >>catch url
+curl –b “cookies.txt”
+
+
+
+
+
+Telnet
+Telnet協議是TCP/IP協議族的其中之一，是Internet遠端登錄服務的標準協議和主要方式，常用於網頁伺服器的遠端控制，可供使用者在本地主機執行遠端主機上的工作。
+使用者首先在電腦執行Telnet程序，連線至目的地伺服器，然後輸入帳號和密碼以驗證身份。使用者可以在本地主機輸入命令，然後讓已連接的遠端主機執行，就像直接在對方的控制台上輸入一樣。
+
+
+SMTP(Simple Mail Transfer Protocol) 簡單郵件傳輸協議
+
+MVC(Model-View-Controller)
+
+>>Separated Presentation
+MVC→SmallTalk
+
+軟體系統分為三個基本部分：模型（Model）、檢視（View）和控制器（Controller）
+模型（Model） 「資料模型」（Model）用於封裝與應用程式的業務邏輯相關的資料以及對資料的處理方法。「模型」有對資料直接存取的權力，例如對資料庫的存取。「模型」不依賴「檢視」和「控制器」，也就是說，模型不關心它會被如何顯示或是如何被操作。但是模型中資料的變化一般會透過一種重新整理機制被公布。為了實作這種機制，那些用於監視此模型的檢視必須事先在此模型上註冊，從而，檢視可以了解在資料模型上發生的改變。
+檢視（View） 檢視層能夠實作資料有目的的顯示（理論上，這不是必需的）。在檢視中一般沒有程式上的邏輯。為了實作檢視上的重新整理功能，檢視需要存取它監視的資料模型（Model），因此應該事先在被它監視的資料那裡註冊。
+控制器（Controller） 控制器起到不同層面間的組織作用，用於控制應用程式的流程。它處理事件並作出響應。「事件」包括使用者的行為和資料模型上的改變。
+ 
+這張圖示中的執行步驟是：
+1.	瀏覽器發出HTTP request請求給Rails
+2.	路由(Routing)根據規則決定派往哪一個Controller的Action
+3.	負責處理的Controller Action操作Model資料
+4.	Model存取資料庫或資料處理
+5.	Controller Action將得到的資料餵給View樣板
+6.	回傳最後的HTML成品給瀏覽器
+
+CRUD
+即為Create、Read、Update、Delete等四項基本資料庫操作
+
+WEBrick
+ providing simple HTTP web server services
+ 
+課本4.1_hw
+cd Documents
+rails new myrottoenpotatoes –T
+cd myrottoenpotatoes
+cat Gemfile
+vi Gemfile
+# use Haml for templates
+gem 'haml'
+# use Ruby debugger
+group :development, :test do
+  gem 'debugger'
+end
