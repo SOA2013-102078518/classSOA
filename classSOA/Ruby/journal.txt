@@ -4,9 +4,10 @@ github
 
 交作業 cd Document/
        git init
-       git add classSA
+       git add classSOA
+git commit -m "first commit"
        git status
-       git git remote add origin https://github.com/SOA2013-102078518/ClassSOA.git
+       git remote add origin https://github.com/SOA2013-102078518/classSOA.git
  >> https://github.com/id/repo.git
 git push -u origin master
 
@@ -191,8 +192,6 @@ wc file	count number of lines/words/characters in file
 
  Tutorial 3
 
-
-
 command > file	redirect standard output to a file
 command >> file	append standard output to a file
 command < file	redirect standard input from a file
@@ -203,6 +202,18 @@ who	list users currently logged in
 a2ps -Pprinter textfile	print text file to named printer
 lpr -Pprinter psfile	print postscript file to named printer
 
+Tutorial 4 
+% ls list* >> This will list all files in the current directory starting with list....
+% ls *list
+This will list all files in the current directory ending with ....list
+*	match any number of characters
+?	match one character
+man command	read the online manual page for a command
+whatis command	brief description of a command
+apropos keyword	match commands with keyword in their man page
+
+
+
 
 Array
 Array.new
@@ -211,11 +222,12 @@ shelf=["anna","hua","mimi"]
 shelf.length
 shelf[0]  “anna”
 shelf<<"mom"
-shelf.reverse!  ["mom", "mimi", "hua", "anna"] >>加驚嘆號才會reverse
+shelf.reverse!  ["mom", "mimi", "hua", "anna"]>>加驚嘆號才會reverse
 shelf.reverse   ["anna", "hua", "mimi", "mom"]
 
-       0            1            2                3
-      anna	   hua         	mimi	         Mom
+ 0      1        2       3
+anna	hua	mimi	Mom
+
 
 Hash
 directory=Hash["anna"=>"0912867721","hua"=>"0912689351"]
@@ -232,7 +244,6 @@ emacs blog.rb
 
 
 
-
 entry.title>>會出現錯誤，因為無法從class外部更改 read他們
 要先attr_accessor:title,:mood,:fulltext,:time
 
@@ -241,6 +252,8 @@ Blog.map{|ent| ent.title}
 
 curl –c “cookies.txt” http://google.com >>catch url
 curl –b “cookies.txt”
+
+
 
 
 
@@ -277,9 +290,10 @@ CRUD
 WEBrick
  providing simple HTTP web server services
  
-課本4.1_hw
+課本4.1 
 cd Documents
-rails new myrottoenpotatoes –T
+rails new myrottoenpotatoes –T  >>new 新的app
+>>app 目錄是你主要工作的地方，不同子目錄存放了 Models、Controllers、Views、Helpers 和 Assets 等檔案。
 cd myrottoenpotatoes
 cat Gemfile
 vi Gemfile
@@ -289,3 +303,25 @@ gem 'haml'
 group :development, :test do
   gem 'debugger'
 end
+
+Gemfile 設定你的 Rails 應用程式會使用哪些 Gems
+log/
+不同執行環境的 log 檔案會分別記錄在這裡
+
+config/
+雖然 Rails 的原則是慣例優於設定，不過還是有一些需要設定的地方。這個目錄下存放了例如資料庫設定檔 database.yml、路由設定 routes.rb、應用程式設定檔 application.rb 和不同執行環境的設定檔在 config/environments 目錄下。
+
+
+
+
+一開始連到index畫面http://localhost:3000/
+如果http://localhost:3000/movies 的話就會發生錯誤
+
+後來到config/route.rb檔redirect
+Myrottenpotatoes::Application.routes.draw do
+ resources :movies
+root :to => redirect('/movies')
+end
+
+在URL輸入http://localhost:3000/movies
+出現uninitialized constant MoviesController
