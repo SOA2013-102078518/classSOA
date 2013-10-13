@@ -1,0 +1,45 @@
+使用rails console(可以簡寫為rails c) 進入主控台模式做練習
+
+新增一個 Migration 檔案
+rails g migration migration_name
+class MigrationName < ActiveRecord::Migration
+  def up
+    end
+
+      def down
+        end
+        end
+在這個類別中，包含了兩個類別方法分別是 up 和 down。其中 up 會在執行這個 migration 時執行，
+反之 down 會在滾回(Roll back)這個 Migration 時執行。
+例如，我們在 up 時新增一個資料庫表格(table)，那麼就可以在 down 的時候把這個table刪除。
+
+
+create_table(name, options) 新增資料表
+drop_table(name) 移除資料表
+rename_table(old_name, new_name) 修改資料表名稱
+change_table 修改資料表欄位
+
+
+
+欄位也還有一些參數可以設定：
+null: 是否允許NULL，預設是允許
+default: 預設值
+limit: 用於string、text、integer、binary指定最大值
+
+Migration 搭配的 Rake 任務
+rake db:create 依照目前的 RAILS_ENV 環境建立資料庫
+rake db:create:all 建立所有環境的資料庫
+rake db:drop 依照目前的 RAILS_ENV 環境刪除資料庫
+rake db:drop:all 刪除所有環境的資料庫
+rake db:migrate 執行Migration動作
+rake db:rollback STEP=n 回復上N個 Migration 動作
+rake db:migrate:up VERSION=20080906120000 執行特定版本的Migration
+rake db:migrate:down VERSION=20080906120000 回復特定版本的Migration
+rake db:version 目前資料庫的Migration版本
+rake db:seed 執行 db/seeds.rb 載入種子資料
+
+
+種子資料 Seed
+
+種子資料Seed的意思是，有一些資料是應用程式跑起來必要基本資料，而這些資料的產生我們會放在db/seeds.rb這個檔案。
+
