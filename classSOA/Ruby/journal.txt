@@ -1,7 +1,6 @@
 github
 帳號:SOA2013-102078518
 
-
 交作業 cd Document/
        git init
        git add classSOA
@@ -446,4 +445,48 @@ Here, I can see that I may only read the age.
 
 
 
+ 
+2013/10/21
+Validation 資料驗證
+validates_presence_of 是最常用的規則，用來檢查資料為非 nil 或空字串。
+class Person < ActiveRecord::Base
+ validates_presence_of :name
+ validates_presence_of :login
+ validates_presence_of :email
+end
+validates_length_of 會檢查字串的長度
+validates_numericality_of 會檢查必須是一個數字，以及數字的大小
+
+
+回呼 Callback
+回呼可以在Model資料的生命週期，掛載事件上去，例如我們可以在資料儲存進資料庫前，做一些修正，或是再儲存成功之後，做一些其他動作。回呼大致可以分成三類：
+在Validation驗證前後 2. 在儲存進資料庫前後 3. 在從資料庫移除前後
+
+回呼的方法最好放在protected或private下，確保從Model外部是無法呼叫的。
+before_validation和before_save的差別在於後者不會經過Validation資料驗證。
+請避免before_開頭的回呼方法中，最後運算的結果不小心回傳false。這樣會中斷儲存程序。如果不確定的話，請回傳return true。這算是常見的地雷，而且不容易除錯(你會發現資料莫名地無法儲存成功)。
+	Event-driven 事件驅動程式設計
+是一種電腦程式設計模型。這種模型的程式執行流程是由使用者的動作（如滑鼠的按鍵，鍵盤的按鍵動作）或者是由其他程式的訊息來決定的。
+	Stateless service
+1.不會記住(retain)之前的連線 
+2.每個request都被視為是唯一且獨立的 
+舉例來說，我在Yahoo首頁點下新聞，進入Yahoo新聞的頁面，跟我直接在網址列中打上http://tw.news.yahoo.com/取得的結果是一樣的，我想要看Yahoo新聞不見得要經過進入Yahoo首頁(http://tw.yahoo.com/)的動作，也就是說我可不可以看Yahoo新聞只跟我有沒有連到http://tw.news.yahoo.com/這個網址有關，而與我前面的步驟無關，這種情況，我們稱之為Stateless。 
+但網頁有沒有可能是Stateful(有狀態)呢？當然是有可能的，某些網頁會限制我們要先進行某些動作A後才能進入另一個畫面B，你沒有作過A想要直接request B畫面是不可行的，要達成Stateful的做法很多種，我們常見的Session就是其中一種，以博客來網路書店為例，如果我沒有登入，要直接看購物車的內容，就什麼都看不到
+
+	OAuth（開放授權）(twitter facebook)
+是一個開放標準，允許用戶讓第三方應用訪問該用戶在某一網站上存儲的私密的資源（如照片，視頻，聯繫人列表），而無需將用戶名和密碼提供給第三方應用。
+
+使用者可以在不透露帳號密碼的情況下， 
+授權第三方網路應用服務(在協定中稱為Consumer)使用(或登入)原本的網路服務(在協定稱為Service Provider)。 
+例如我們可以利用oauth的方式在自己撰寫的網站登入twitter, google, yahoo或foursquare等網站， 
+並使用其開放出來的網路服務
+
+	Load balancing
+是一種計算機網路技術，用來在多個計算機(計算機集群)、網路連接、CPU、磁碟驅動器或其他資源中分配負載，以達到優化資源使用、最大化吞吐率、最小化響應時間、同時避免過載的目的。
+
+	ORM Object-relational mapping
+是一種程式設計技術，用於實現物件導向編程語言裡不同類型系統的資料之間的轉換。從效果上說，它其實是創建了一個可在編程語言裡使用的「虛擬對象資料庫」
+物件導向是從軟體工程基本原則（如耦合、聚合、封裝）的基礎上發展起來的，而關聯式資料庫則是從數學理論發展而來的，兩套理論存在顯著的區別。為了解決這個不匹配的現象，物件關聯對映技術應運而生。
+ActiveRecord可以用Associations來定義資料表之間的關聯性，這是最被大家眼睛一亮ORM功能。
+透過primary key和foreign keys將資料表互相關連起來。
 
