@@ -9,7 +9,8 @@
  
 # This file is app/controllers/movies_controller.rb
 class MoviesController < ApplicationController
-  def index
+before_filter :authenticate_moviegoer!  
+def index
     @movies = Movie.all
   end
 def show

@@ -8,3 +8,13 @@
  
   %body
     = yield
+-# this goes just inside %body:
+- if moviegoer_signed_in?
+  = link_to 'log_out', destroy_moviegoer_session_path, :method => 'delete'
+- else
+  = link_to 'login', new_moviegoer_session_path
+ 
+- if flash[:notice]
+  notice.message= flash[:notice]
+- elsif flash[:warning]
+  warning.message= flash[:warning]
