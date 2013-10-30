@@ -1,17 +1,19 @@
 class Moviegoer < ActiveRecord::Base
+
+
+has_many :reviews
+has_many :movies, :through => :reviews
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook] 
-           
+ devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
-
-
-
+attr_accessor :email
+attr_accessible :provider, :uid, :name
 def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
-   moviegoer = Moviegoer.where(:provider => auth.provider, :uid => auth.uid).first
+  moviegoer = Moviegoer.where(:provider => auth.provider, :uid => auth.uid).first
   unless moviegoer
     moviegoer = Moviegoer.create(name:auth.extra.raw_info.name,
                          provider:auth.provider,
@@ -29,4 +31,8 @@ def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
       end
     end
   end
+
+
+
 end
+
