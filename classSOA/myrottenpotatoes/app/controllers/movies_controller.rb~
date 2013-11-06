@@ -54,12 +54,12 @@ class MoviesController < ApplicationController
     @movies = @movies.recently_reviewed if params[:recently_reviewed]
   end
   # or even DRYer:
-  #def movies_with_filters_2
-  #  @movies = Movie.with_good_reviews(params[:threshold])
-  #  %w(for_kids with_many_fans recently_reviewed).each do |filter|
-  #    @movies = @movies.send(filter) if params[filter]
-  #  end
-  #end
+  def movies_with_filters_2
+    @movies = Movie.with_good_reviews(params[:threshold])
+    %w(for_kids with_many_fans recently_reviewed).each do |filter|
+      @movies = @movies.send(filter) if params[filter]
+    end
+  end
 
         def search_tmdb
                 # hardwire to simulate failure

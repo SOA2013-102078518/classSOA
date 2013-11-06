@@ -3,9 +3,10 @@ Myrottenpotatoes::Application.routes.draw do
 
         root :to => redirect('/movies')
 
-        post '/movies/search_tmdb'
+        
         resources :movies do
                 resources :reviews
+                post '/movies/search_tmdb'
         end
 
   # The priority is based upon order of creation:

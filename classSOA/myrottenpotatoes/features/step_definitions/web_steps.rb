@@ -252,28 +252,3 @@ end
 Then /^show me the page$/ do
   save_and_open_page
 end
-
-Given /I have added "(.*)" with rating "(.*)"/ do |title, rating|
-  steps %Q{
-    Given I am on the Create New Movie page
-    When  I fill in "Title" with "#{title}"
-    And   I select "#{rating}" from "Rating"
-    And   I press "Save Changes"
-  }
-end
-
-Then /I should see "(.*)" before "(.*)" on (.*)/ do |string1, string2, path|
-  step "I am on #{path}"
-  regexp = /#{string1}.*#{string2}/m #  /m means match across newlines
-  page.body.should =~ regexp
-end
-
-Then(/^I should see "(.*?)" before "(.*?)"$/) do |arg1, arg2|
-  if page.respond_to? :should
-    page.should have_content(arg1)
-    page.should have_content(arg2)
-  else
-    assert page.has_content?(arg1)
-    assert page.has_content?(arg2)
-  end
-end

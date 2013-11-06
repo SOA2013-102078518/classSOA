@@ -6,6 +6,7 @@ Myrottenpotatoes::Application.routes.draw do
         post '/movies/search_tmdb'
         resources :movies do
                 resources :reviews
+                
         end
 
   # The priority is based upon order of creation:
